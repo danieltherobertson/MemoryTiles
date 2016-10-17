@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonSix: UIButton!
     @IBOutlet weak var buttonSeven: UIButton!
     @IBOutlet weak var buttonEight: UIButton!
+    @IBOutlet weak var levelIndicator: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,15 @@ class ViewController: UIViewController {
         var buttons = [UIButton]()
         buttons.append(buttonOne);buttons.append(buttonTwo);buttons.append(buttonThree);buttons.append(buttonFour);buttons.append(buttonFive);buttons.append(buttonSix);buttons.append(buttonSeven);buttons.append(buttonEight)
         
-        for button in buttons {
-            button.glowOnce()
+        levelIndicator.alpha = 0
+        
+       
+        
+        UIView.animate(withDuration: 12, animations: {
+            self.levelIndicator.alpha = 1.0
+            }) { (completion) in
+                print("doot")
+                
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
