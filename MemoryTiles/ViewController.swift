@@ -22,25 +22,27 @@ class ViewController: UIViewController {
     
     var currentLevel = 1
     var buttons = [UIButton]()
+    
+    let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         buttons.append(buttonOne);buttons.append(buttonTwo);buttons.append(buttonThree);buttons.append(buttonFour);buttons.append(buttonFive);buttons.append(buttonSix);buttons.append(buttonSeven);buttons.append(buttonEight)
         
+        assignTagsTo(elements: buttons)
+
         levelIndicator.alpha = 0
         levelIndicator.text = String(currentLevel)
         
-       
+        let test = generateLevelOf(length: 5)
         
         UIView.animate(withDuration: 12, animations: {
             self.levelIndicator.alpha = 1.0
             }) { (completion) in
                 print("doot")
-                
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,23 +50,58 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func generateLevelOf (length: Int) -> [UIButton] {
+    func assignTagsTo (elements: [UIButton]) {
+        var a = 1
+        for button in buttons {
+            button.tag = a
+            a += 1
+        }
+    }
+    
+    func generateLevelOf (length: Int) -> [Int] {
         var buttonNo = 1
         var buttonsLocal = buttons
-        var levelSequence = [UIButton]()
-        while buttonNo < length {
+        var levelSequence = [Int]()
+        while buttonNo <= length {
             buttonsLocal.shuffle()
-            levelSequence.append(buttonsLocal[0])
+            print(buttonsLocal);print("END")
+            let random = Int(arc4random_uniform(3))
+            levelSequence.append(buttonsLocal[random].tag)
             buttonNo += 1
         }
-        
+        levelSequence.shuffle()
         return levelSequence
     }
     
-    func performLevelWith (sequence: [UIButton]) {
+    func performLevelWith (sequence: [Int]) {
         for item in sequence {
-            item.glowOnce()
+            for button in buttons {
+                if button.tag == item {
+                    button.glowOnce()
+                    onGlowComplete = {
+                        DispatchQueue.main.asyncAfter(deadline: self.when) {
+                            // Your code with delay
+                        }
+                    }
+                }
+            }
         }
     }
+    
+    
+//    func checkForPatternsIn (sequence:[Int]) {
+//        var localSequence = sequence
+//        for (button, index) in localSequence.enumerated() {
+//            //Get the first button in the sequence, then get the one directly after
+//            let buttonA = button
+//            let buttonB = sequence[index+1]
+//            if buttonA + 1 == buttonB || buttonA - 1 == buttonB {
+//                //If we find a pair of numbers that numerically follow on from each other, reshuffle the array, break for loop and restart the checking process
+//                localSequence.shuffle()
+//                self.checkForPatternsIn(sequence: localSequence)
+//                break
+//            }
+//        }
+//    }
 }
 

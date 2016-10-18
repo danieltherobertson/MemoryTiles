@@ -10,6 +10,7 @@ import Foundation
 import Dispatch
 
 private var GLOWVIEW_KEY = "GLOWVIEW"
+var onGlowComplete: (() -> Void)!
 
 extension UIView {
     
@@ -80,6 +81,9 @@ extension UIView {
         
         // Finally, keep a reference to this around so it can be removed later
         self.glowView = glowView
+        if let callback = onGlowComplete {
+            callback ()
+        }
     }
     
     func glowOnceAtLocation(_ point: CGPoint, inView view:UIView) {
