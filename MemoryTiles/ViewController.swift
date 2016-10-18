@@ -19,14 +19,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonSeven: UIButton!
     @IBOutlet weak var buttonEight: UIButton!
     @IBOutlet weak var levelIndicator: UILabel!
+    
+    var currentLevel = 1
+    var buttons = [UIButton]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var buttons = [UIButton]()
+        
         buttons.append(buttonOne);buttons.append(buttonTwo);buttons.append(buttonThree);buttons.append(buttonFour);buttons.append(buttonFive);buttons.append(buttonSix);buttons.append(buttonSeven);buttons.append(buttonEight)
         
         levelIndicator.alpha = 0
+        levelIndicator.text = String(currentLevel)
         
        
         
@@ -42,6 +46,25 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func generateLevelOf (length: Int) -> [UIButton] {
+        var buttonNo = 1
+        var buttonsLocal = buttons
+        var levelSequence = [UIButton]()
+        while buttonNo < length {
+            buttonsLocal.shuffle()
+            levelSequence.append(buttonsLocal[0])
+            buttonNo += 1
+        }
+        
+        return levelSequence
+    }
+    
+    func performLevelWith (sequence: [UIButton]) {
+        for item in sequence {
+            item.glowOnce()
+        }
     }
 }
 

@@ -16,6 +16,7 @@
 		655607D01DB3EDB10071443C /* MemoryTilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655607CF1DB3EDB10071443C /* MemoryTilesTests.swift */; };
 		655607DB1DB3EDB10071443C /* MemoryTilesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655607DA1DB3EDB10071443C /* MemoryTilesUITests.swift */; };
 		655607E91DB40B930071443C /* UIView-Glow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655607E81DB40B930071443C /* UIView-Glow.swift */; };
+		65A91CB01DB59AFB00D502D3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A91CAF1DB59AFB00D502D3 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		655607DA1DB3EDB10071443C /* MemoryTilesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTilesUITests.swift; sourceTree = "<group>"; };
 		655607DC1DB3EDB10071443C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655607E81DB40B930071443C /* UIView-Glow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Glow.swift"; sourceTree = "<group>"; };
+		65A91CAF1DB59AFB00D502D3 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				655607B71DB3EDB10071443C /* AppDelegate.swift */,
 				655607B91DB3EDB10071443C /* ViewController.swift */,
+				65A91CAF1DB59AFB00D502D3 /* ArrayExtension.swift */,
 				655607E81DB40B930071443C /* UIView-Glow.swift */,
 				655607BB1DB3EDB10071443C /* Main.storyboard */,
 				655607C11DB3EDB10071443C /* Assets.xcassets */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A91CB01DB59AFB00D502D3 /* ArrayExtension.swift in Sources */,
 				655607C01DB3EDB10071443C /* MemoryTiles.xcdatamodeld in Sources */,
 				655607BA1DB3EDB10071443C /* ViewController.swift in Sources */,
 				655607B81DB3EDB10071443C /* AppDelegate.swift in Sources */,
