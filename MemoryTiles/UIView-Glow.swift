@@ -10,10 +10,9 @@ import Foundation
 import Dispatch
 
 private var GLOWVIEW_KEY = "GLOWVIEW"
-var onGlowComplete: (() -> Void)!
+//var onGlowComplete: (() -> Void)!
 
 extension UIView {
-    
     var glowView: UIView? {
         get {
             return objc_getAssociatedObject(self, &GLOWVIEW_KEY) as? UIView
@@ -81,9 +80,9 @@ extension UIView {
         
         // Finally, keep a reference to this around so it can be removed later
         self.glowView = glowView
-        if let callback = onGlowComplete {
-            callback ()
-        }
+       // if let callback = onGlowComplete {
+       //     callback ()
+       // }
     }
     
     func glowOnceAtLocation(_ point: CGPoint, inView view:UIView) {
@@ -100,7 +99,11 @@ extension UIView {
     }
     
     func glowOnce() {
-        self.startGlowing()
+        
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.startGlowing()
+        }
         
         let delay: Double = 2 * Double(Int64(NSEC_PER_SEC))
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {

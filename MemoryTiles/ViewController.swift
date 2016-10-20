@@ -22,9 +22,6 @@ class ViewController: UIViewController {
     
     var currentLevel = 1
     var buttons = [UIButton]()
-    
-    let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +34,14 @@ class ViewController: UIViewController {
         levelIndicator.text = String(currentLevel)
         
         let test = generateLevelOf(length: 5)
-        
-        UIView.animate(withDuration: 12, animations: {
-            self.levelIndicator.alpha = 1.0
-            }) { (completion) in
-                print("doot")
-        }
+        print(test)
+       // buttons[test[0]-1].glowOnce()
+        performLevelWith(sequence: test)
+//        UIView.animate(withDuration: 12, animations: {
+//            self.levelIndicator.alpha = 1.0
+//            }) { (completion) in
+//                print("doot")
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,17 +73,14 @@ class ViewController: UIViewController {
     }
     
     func performLevelWith (sequence: [Int]) {
+        
+        var when = DispatchTime.now() + 2
+        
         for item in sequence {
-            for button in buttons {
-                if button.tag == item {
-                    button.glowOnce()
-                    onGlowComplete = {
-                        DispatchQueue.main.asyncAfter(deadline: self.when) {
-                            // Your code with delay
-                        }
-                    }
-                }
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.buttons[item-1].glowOnce()
             }
+            when = when + 1
         }
     }
     
