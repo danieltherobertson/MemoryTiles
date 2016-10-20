@@ -54,6 +54,7 @@ class ViewController: UIViewController {
         for button in buttons {
             button.tag = a
             a += 1
+            button.setTitle("\(button.tag)", for: UIControlState.normal)
         }
     }
     
@@ -80,7 +81,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: when) {
                 self.buttons[item-1].glowOnce()
             }
-            when = when + 1
+            when = when + 2
         }
     }
     

@@ -10,7 +10,6 @@ import Foundation
 import Dispatch
 
 private var GLOWVIEW_KEY = "GLOWVIEW"
-//var onGlowComplete: (() -> Void)!
 
 extension UIView {
     var glowView: UIView? {
@@ -28,9 +27,9 @@ extension UIView {
     
     func startGlowingWithColor(_ color:UIColor, fromIntensity:CGFloat, toIntensity:CGFloat, repeat shouldRepeat:Bool) {
         // If we're already glowing, don't bother
-        if self.glowView != nil {
-            return
-        }
+//        if self.glowView != nil {
+//            return
+//        }
         
         // The glow image is taken from the current view's appearance.
         // As a side effect, if the view's content, size or shape changes,
@@ -72,7 +71,7 @@ extension UIView {
         animation.fromValue = fromIntensity
         animation.toValue = toIntensity
         animation.repeatCount = shouldRepeat ? .infinity : 0 // HUGE_VAL = .infinity / Thanks http://stackoverflow.com/questions/7082578/cabasicanimation-unlimited-repeat-without-huge-valf
-        animation.duration = 1.0
+        animation.duration = 0.75
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
@@ -99,13 +98,11 @@ extension UIView {
     }
     
     func glowOnce() {
+
+        self.startGlowing()
         
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.startGlowing()
-        }
         
-        let delay: Double = 2 * Double(Int64(NSEC_PER_SEC))
+        let delay: Double = 1 * Double(Int64(NSEC_PER_SEC))
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
             self.stopGlowing()
         }
