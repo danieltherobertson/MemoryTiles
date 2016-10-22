@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var buttons = [UIButton]()
     var stagedLevel = [Int]()
     var playerAnswer = [Int]()
+    var timer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,21 +72,24 @@ class ViewController: UIViewController {
     }
     
     func performLevelWith (sequence: [Int]) {
-        var sequenceFinsihed = false
+        var currentIteration = 0
         var when = DispatchTime.now() + 2
-        for button in buttons {
-            button.isEnabled = false
-        }
+        let enableTime = DispatchTime.now() + 8
+        disableButtons()
         for item in sequence {
             DispatchQueue.main.asyncAfter(deadline: when) {
                 self.buttons[item-1].glowOnce()
+                currentIteration += 1
+                print(currentIteration)
+                if currentIteration == sequence.count {
+                    self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.enableButtons), userInfo: nil, repeats: false)
+                }
             }
             when = when + 2
         }
+        
         print("level done")
-//        for button in buttons {
-//            button.isEnabled = true
-//        }
+//
     }
     
     func triggerGlowAt(button: UIButton) {
@@ -97,18 +101,29 @@ class ViewController: UIViewController {
         if playerAnswer.count == stagedLevel.count && stagedLevel[playersAnswer] == pressedButton {
             print("CORRECT ANSWER, LEVEL COMPLETE")
             
-            for button in buttons {
-                button.isEnabled = false
-            }
+            disableButtons()
         
         } else if stagedLevel[playersAnswer] == pressedButton {
             print("CORRECT ANSWER")
         } else {
             print("WRONG ANSWER")
+            disableButtons()
         }
         button.glowOnce()
     }
     
+    func enableButtons () {
+        print("helloooo")
+        for button in buttons {
+            button.isEnabled = true
+        }
+    }
+    
+    func disableButtons () {
+        for button in buttons {
+            button.isEnabled = false
+        }
+    }
     
 //    func checkForPatternsIn (sequence:[Int]) {
 //        var localSequence = sequence
