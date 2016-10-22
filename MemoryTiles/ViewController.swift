@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     var currentLevel = 1
     var buttons = [UIButton]()
+    var stagedLevel = [Int]()
+    var playerAnswer = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +35,9 @@ class ViewController: UIViewController {
         levelIndicator.alpha = 0
         levelIndicator.text = String(currentLevel)
         
-        let test = generateLevelOf(length: 5)
-        print(test)
-       // buttons[test[0]-1].glowOnce()
-        performLevelWith(sequence: test)
-//        UIView.animate(withDuration: 12, animations: {
-//            self.levelIndicator.alpha = 1.0
-//            }) { (completion) in
-//                print("doot")
-//        }
+        stagedLevel = generateLevelOf(length: 5)
+        print(stagedLevel)
+        performLevelWith(sequence: stagedLevel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,8 +49,9 @@ class ViewController: UIViewController {
         var a = 1
         for button in buttons {
             button.tag = a
+            button.isEnabled = false
+            button.addTarget(self, action: #selector(triggerGlowAt(button:)), for: UIControlEvents.touchUpInside)
             a += 1
-            button.setTitle("\(button.tag)", for: UIControlState.normal)
         }
     }
     
@@ -64,7 +61,7 @@ class ViewController: UIViewController {
         var levelSequence = [Int]()
         while buttonNo <= length {
             buttonsLocal.shuffle()
-            print(buttonsLocal);print("END")
+           // print(buttonsLocal);print("END")
             let random = Int(arc4random_uniform(3))
             levelSequence.append(buttonsLocal[random].tag)
             buttonNo += 1
@@ -74,15 +71,42 @@ class ViewController: UIViewController {
     }
     
     func performLevelWith (sequence: [Int]) {
-        
+        var sequenceFinsihed = false
         var when = DispatchTime.now() + 2
-        
+        for button in buttons {
+            button.isEnabled = false
+        }
         for item in sequence {
             DispatchQueue.main.asyncAfter(deadline: when) {
                 self.buttons[item-1].glowOnce()
             }
             when = when + 2
         }
+        print("level done")
+//        for button in buttons {
+//            button.isEnabled = true
+//        }
+    }
+    
+    func triggerGlowAt(button: UIButton) {
+        let pressedButton = button.tag
+        playerAnswer.append(pressedButton)
+        
+        let playersAnswer = playerAnswer.count-1
+        
+        if playerAnswer.count == stagedLevel.count && stagedLevel[playersAnswer] == pressedButton {
+            print("CORRECT ANSWER, LEVEL COMPLETE")
+            
+            for button in buttons {
+                button.isEnabled = false
+            }
+        
+        } else if stagedLevel[playersAnswer] == pressedButton {
+            print("CORRECT ANSWER")
+        } else {
+            print("WRONG ANSWER")
+        }
+        button.glowOnce()
     }
     
     
