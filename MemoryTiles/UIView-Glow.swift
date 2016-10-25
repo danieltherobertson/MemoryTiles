@@ -71,7 +71,7 @@ extension UIView {
         animation.fromValue = fromIntensity
         animation.toValue = toIntensity
         animation.repeatCount = shouldRepeat ? .infinity : 0 // HUGE_VAL = .infinity / Thanks http://stackoverflow.com/questions/7082578/cabasicanimation-unlimited-repeat-without-huge-valf
-        animation.duration = 0.75
+        animation.duration = 0.65
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
@@ -85,7 +85,7 @@ extension UIView {
     }
     
     func glowOnceAtLocation(_ point: CGPoint, inView view:UIView) {
-        self.startGlowingWithColor(UIColor.white, fromIntensity: 0, toIntensity: 0.6, repeat: false)
+        self.startGlowingWithColor(UIColor.white, fromIntensity: 0, toIntensity: 0.7, repeat: false)
         
         self.glowView!.center = point
         view.addSubview(self.glowView!)
