@@ -12,13 +12,14 @@ class ViewController: UIViewController {
     
 
     @IBOutlet weak var buttonOne: TileButton!
-    @IBOutlet weak var buttonTwo: UIButton!
-    @IBOutlet weak var buttonThree: UIButton!
-    @IBOutlet weak var buttonFour: UIButton!
-    @IBOutlet weak var buttonFive: UIButton!
-    @IBOutlet weak var buttonSix: UIButton!
-    @IBOutlet weak var buttonSeven: UIButton!
-    @IBOutlet weak var buttonEight: UIButton!
+    @IBOutlet weak var buttonTwo: TileButton!
+    @IBOutlet weak var buttonThree: TileButton!
+    @IBOutlet weak var buttonFour: TileButton!
+    @IBOutlet weak var buttonFive: TileButton!
+    @IBOutlet weak var buttonSix: TileButton!
+    @IBOutlet weak var buttonSeven: TileButton!
+    @IBOutlet weak var buttonEight: TileButton!
+    
     @IBOutlet weak var levelIndicator: UILabel!
     
     var currentLevel = 1

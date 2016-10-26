@@ -8,7 +8,7 @@
 
 import UIKit
 
-//extension UIColor {
-//    var buttonOne: UIColor { get { return UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1.0) } }
-//}
+extension UIColor {
+    var buttonOneGreen: UIColor { get { return UIColor(red: 51/255, green: 153/255, blue: 89/255, alpha: 1.0) } }
+}
 
