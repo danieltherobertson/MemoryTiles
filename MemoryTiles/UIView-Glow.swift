@@ -111,7 +111,7 @@ extension UIView {
     
     // Create a pulsing, glowing view based on this one.
     func startGlowing() {
-        self.startGlowingWithColor(UIColor.white, intensity:0.6);
+        self.startGlowingWithColor(UIColor.black, intensity:0.8);
     }
     
     // Stop glowing by removing the glowing view from the superview

@@ -18,6 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-2G-lXl">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Iye-h0-Pxg">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59R-Bc-Cko" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
@@ -100,28 +106,24 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHl-8g-hTQ">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="CBn-ux-PKn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rzz-2G-lXl" secondAttribute="bottom" id="00w-aR-KTo"/>
+                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5AE-YC-Dgz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KxD-bY-2R8" secondAttribute="bottom" constant="15" id="7Vm-fw-Zc0"/>
                             <constraint firstItem="KxD-bY-2R8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="86N-Hl-EGj"/>
                             <constraint firstItem="KxD-bY-2R8" firstAttribute="width" secondItem="Iye-h0-Pxg" secondAttribute="width" id="8tB-Ru-aAc"/>
                             <constraint firstItem="KxD-bY-2R8" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="trailing" constant="15" id="90L-ya-usS"/>
                             <constraint firstItem="KxD-bY-2R8" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="trailing" constant="15" id="AMR-Nq-ZvU"/>
+                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KjH-K3-brS"/>
                             <constraint firstItem="Iye-h0-Pxg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="LbM-yW-zzf"/>
+                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Mbh-Ub-TUg"/>
+                            <constraint firstAttribute="trailing" secondItem="Rzz-2G-lXl" secondAttribute="trailing" id="NLQ-DS-e6y"/>
                             <constraint firstItem="Iye-h0-Pxg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="P7T-iv-p56"/>
                             <constraint firstAttribute="trailing" secondItem="KxD-bY-2R8" secondAttribute="trailing" constant="15" id="WTA-I5-dp9"/>
-                            <constraint firstItem="dHl-8g-hTQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xcg-6n-h1O"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iye-h0-Pxg" secondAttribute="bottom" constant="15" id="b3E-QR-t1s"/>
-                            <constraint firstItem="dHl-8g-hTQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n1M-ij-J6E"/>
+                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fqh-WC-2m4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -133,12 +135,12 @@
                         <outlet property="buttonSix" destination="N6f-Zw-vcb" id="Z1I-PH-1aX"/>
                         <outlet property="buttonThree" destination="Xjz-no-4CI" id="fon-zB-YZF"/>
                         <outlet property="buttonTwo" destination="lK7-Gr-hG8" id="Do3-2V-c3b"/>
-                        <outlet property="levelIndicator" destination="dHl-8g-hTQ" id="05n-0U-ScU"/>
+                        <outlet property="levelIndicator" destination="Rzz-2G-lXl" id="ZpQ-zX-ugm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="285.60000000000002" y="385.45727136431788"/>
+            <point key="canvasLocation" x="280.80000000000001" y="397.15142428785612"/>
         </scene>
     </scenes>
 </document>

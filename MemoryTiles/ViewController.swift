@@ -9,8 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-
     @IBOutlet weak var buttonOne: TileButton!
     @IBOutlet weak var buttonTwo: TileButton!
     @IBOutlet weak var buttonThree: TileButton!
@@ -23,33 +21,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var levelIndicator: UILabel!
     
     var currentLevel = 1
+    var levelLength = 3
+    
     var buttons = [UIButton]()
     var stagedLevel = [Int]()
-    var playerAnswer = [Int]()
+    var playerAnswerSequence = [Int]()
     var timer: Timer!
-
+//--------------------------------------------------------------------------------------------------//
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(buttonOne.glowColor)
-        
+
         buttons.append(buttonOne);buttons.append(buttonTwo);buttons.append(buttonThree);buttons.append(buttonFour);buttons.append(buttonFive);buttons.append(buttonSix);buttons.append(buttonSeven);buttons.append(buttonEight)
         
         assignTagsTo(elements: buttons)
 
         levelIndicator.alpha = 0
-        levelIndicator.text = String(currentLevel)
+        levelIndicator.text = "Level: \(currentLevel)"
         
-        stagedLevel = generateLevelOf(length: 5)
-        print(stagedLevel)
+        stagedLevel = generateLevelOf(length: levelLength)
         performLevelWith(sequence: stagedLevel)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+//--------------------------------------------------------------------------------------------------//
     func assignTagsTo (elements: [UIButton]) {
         var a = 1
         for button in buttons {
@@ -59,76 +51,102 @@ class ViewController: UIViewController {
             a += 1
         }
     }
-    
+//--------------------------------------------------------------------------------------------------//
     func generateLevelOf (length: Int) -> [Int] {
+        //Current button
         var buttonNo = 1
+        //Local copy of the buttons array
         var buttonsLocal = buttons
+        //Creates level sequence, array of ints to be returned as the completed generated sequence
         var levelSequence = [Int]()
+        //While the current button is less than or equal to the total length of the desired sequece
         while buttonNo <= length {
+            //Shuffle the local array
             buttonsLocal.shuffle()
            // print(buttonsLocal);print("END")
-            let random = Int(arc4random_uniform(3))
+            //Generate a random number between 0 and 7 (That's 8 posible numbers, starting at zero because the indexing of the buttons array does too)
+            let random = Int(arc4random_uniform(8))
+            print("random: \(random)")
+            //Get the button at the index of that random number, get its tag and add it to the level sequence array
             levelSequence.append(buttonsLocal[random].tag)
+            //Increase current button number by 1
             buttonNo += 1
         }
         levelSequence.shuffle()
+        print("Staged level is: \(levelSequence)")
         return levelSequence
     }
-    
+//--------------------------------------------------------------------------------------------------//
     func performLevelWith (sequence: [Int]) {
+        //Current button glow of sequence being performed:
         var currentIteration = 0
-        var when = DispatchTime.now() + 2
-        let enableTime = DispatchTime.now() + 8
+        //Delay between each glow in seconds
+        var glowDelay = DispatchTime.now() + 2
+        //Disable buttons so player cannot interupt sequence
         disableButtons()
-        for item in sequence {
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                self.buttons[item-1].glowOnce()
+        for button in sequence {
+            //For each item in the current level sequence, after a delay of 2 seconds...
+            DispatchQueue.main.asyncAfter(deadline: glowDelay) {
+                //Get the button at one less than the current item in the loop (array indexing starts at 0, for loop iteration starts at 1. e.g button six is at array index 5. If we want the fifth button to glow, we target the button at array index 4) and make it glow
+                self.buttons[button-1].glowOnce()
+                print(self.buttons[button-1].tag)
+                //Increase currentIteration to move on to next button in sequence
                 currentIteration += 1
-                print(currentIteration)
+                //If we've reach the end of the sequence, enable buttons for user response after 3 seconds
                 if currentIteration == sequence.count {
+                    print("Staged level has finished playing")
                     self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.enableButtons), userInfo: nil, repeats: false)
                 }
             }
-            when = when + 2
+            glowDelay = glowDelay + 2
         }
-        
-        print("level done")
-//
     }
-    
+//--------------------------------------------------------------------------------------------------//
     func triggerGlowAt(button: UIButton) {
+        //Get the tag number of the pressed button
         let pressedButton = button.tag
-        playerAnswer.append(pressedButton)
-        
-        let playersAnswer = playerAnswer.count-1
-        
-        if playerAnswer.count == stagedLevel.count && stagedLevel[playersAnswer] == pressedButton {
+        //Add the tag number of the pressed button to playerAnswerSequence
+        playerAnswerSequence.append(pressedButton)
+        //Get the sequence position of the players most recent button press. e.g if the players answer was 3 numbers long, the index position of the most recently added button press is 2.
+        let playersCurrentAnswer = playerAnswerSequence.count-1
+        //If the length of players answer sequence matches the staged level sequence and the pressed button tag matches the final button in the staged sequence, level complete and buttons disabled
+        if playerAnswerSequence.count == stagedLevel.count && stagedLevel[playersCurrentAnswer] == pressedButton {
             print("CORRECT ANSWER, LEVEL COMPLETE")
-            
             disableButtons()
-        
-        } else if stagedLevel[playersAnswer] == pressedButton {
+        } else if stagedLevel[playersCurrentAnswer] == pressedButton {
+        //Else if the tag value of the pressed button matches the value of the staged button at the sequence position of the players current answer, the right button was pressed but the sequence isn't over
             print("CORRECT ANSWER")
         } else {
+        //Else the wrong button was pressed!
             print("WRONG ANSWER")
             disableButtons()
         }
+        print(pressedButton)
         button.glowOnce()
     }
-    
+//--------------------------------------------------------------------------------------------------//
     func enableButtons () {
-        print("helloooo")
+        print("Player's answer can begin")
         for button in buttons {
             button.isEnabled = true
         }
     }
-    
+//--------------------------------------------------------------------------------------------------//
     func disableButtons () {
         for button in buttons {
             button.isEnabled = false
         }
     }
-    
+//--------------------------------------------------------------------------------------------------//
+    func displayLevel() {
+        levelIndicator.text = "\(currentLevel)"
+        UIView.animate(withDuration: 0.7, animations: { 
+            self.levelIndicator.alpha = 1
+            }) { (true) in
+                self.performLevelWith(sequence: self.stagedLevel)
+        }
+    }
+//--------------------------------------------------------------------------------------------------//
 //    func checkForPatternsIn (sequence:[Int]) {
 //        var localSequence = sequence
 //        for (button, index) in localSequence.enumerated() {

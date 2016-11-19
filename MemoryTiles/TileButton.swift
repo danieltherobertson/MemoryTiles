@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable class TileButton: UIButton {
 
     @IBInspectable var glowColor: UIColor!
+    @IBInspectable var audioTone: String!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -18,7 +19,7 @@ import UIKit
         self.layer.borderColor = UIColor.white.cgColor
       //  self.layer.cornerRadius = 10
         self.layer.borderWidth = 4
-        self.alpha = 0.5
+       // self.alpha = 0.5
     }
     
 
