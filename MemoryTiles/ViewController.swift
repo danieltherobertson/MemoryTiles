@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     var currentLevel = 1
     var levelLength = 3
     
-    var buttons = [UIButton]()
+    var buttons = [TileButton]()
     var stagedLevel = [Int]()
     var playerAnswerSequence = [Int]()
     var timer: Timer!
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         performLevelWith(sequence: stagedLevel)
     }
 //--------------------------------------------------------------------------------------------------//
-    func assignTagsTo (elements: [UIButton]) {
+    func assignTagsTo (elements: [TileButton]) {
         var a = 1
         for button in buttons {
             button.tag = a
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         }
     }
 //--------------------------------------------------------------------------------------------------//
-    func triggerGlowAt(button: UIButton) {
+    func triggerGlowAt(button: TileButton) {
         //Get the tag number of the pressed button
         let pressedButton = button.tag
         //Add the tag number of the pressed button to playerAnswerSequence

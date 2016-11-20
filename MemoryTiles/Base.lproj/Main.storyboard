@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,113 +19,106 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="k1F-6R-4Y6">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Iye-h0-Pxg">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59R-Bc-Cko" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="0.32941176470588235" green="0.96078431372549022" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="glowColor">
+                                                        <color key="value" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjz-no-4CI" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="0.3529411764705882" green="0.78431372549019607" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9y-Q0-daQ" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="1" green="0.52156862745098043" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCY-bI-sGX" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="0.0039215686274509803" green="0.67843137254901964" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="GCY-bI-sGX" firstAttribute="top" secondItem="L9y-Q0-daQ" secondAttribute="bottom" constant="20" id="3ey-Nm-vwt"/>
+                                            <constraint firstAttribute="trailing" secondItem="L9y-Q0-daQ" secondAttribute="trailing" constant="10" id="3gG-60-3z0"/>
+                                            <constraint firstAttribute="trailing" secondItem="GCY-bI-sGX" secondAttribute="trailing" constant="10" id="A4E-Tn-c8r"/>
+                                            <constraint firstItem="Xjz-no-4CI" firstAttribute="top" secondItem="59R-Bc-Cko" secondAttribute="bottom" constant="20" id="BxN-dq-HEa"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xjz-no-4CI" secondAttribute="trailing" constant="10" id="Eij-C8-uyg"/>
+                                            <constraint firstItem="59R-Bc-Cko" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" constant="10" id="Fo2-QU-7Yr"/>
+                                            <constraint firstAttribute="bottom" secondItem="GCY-bI-sGX" secondAttribute="bottom" constant="20" id="GPB-6j-DbN"/>
+                                            <constraint firstItem="L9y-Q0-daQ" firstAttribute="top" secondItem="Xjz-no-4CI" secondAttribute="bottom" constant="20" id="MqR-lh-aHC"/>
+                                            <constraint firstItem="59R-Bc-Cko" firstAttribute="top" secondItem="Iye-h0-Pxg" secondAttribute="top" constant="20" id="UZZ-q0-Cwt"/>
+                                            <constraint firstItem="L9y-Q0-daQ" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" constant="10" id="bFN-gH-GkI"/>
+                                            <constraint firstAttribute="trailing" secondItem="59R-Bc-Cko" secondAttribute="trailing" constant="10" id="hLa-JE-hGJ"/>
+                                            <constraint firstItem="Xjz-no-4CI" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" constant="10" id="oml-6f-tqT"/>
+                                            <constraint firstItem="GCY-bI-sGX" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" constant="10" id="wht-7c-4pi"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KxD-bY-2R8">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK7-Gr-hG8" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="1" green="0.56862745098039214" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r40-WQ-veF" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="1" green="0.45882352941176469" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-Zw-vcb" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="0.0" green="0.95294117647058818" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZq-Q2-Y5K" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
+                                                <color key="backgroundColor" red="1" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="N6f-Zw-vcb" firstAttribute="top" secondItem="r40-WQ-veF" secondAttribute="bottom" constant="20" id="0s0-jf-LbJ"/>
+                                            <constraint firstItem="AZq-Q2-Y5K" firstAttribute="top" secondItem="N6f-Zw-vcb" secondAttribute="bottom" constant="20" id="7Pm-Nm-dPN"/>
+                                            <constraint firstItem="lK7-Gr-hG8" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" constant="10" id="8Bl-bm-Qfl"/>
+                                            <constraint firstAttribute="trailing" secondItem="N6f-Zw-vcb" secondAttribute="trailing" constant="10" id="E0J-L2-yoX"/>
+                                            <constraint firstItem="r40-WQ-veF" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" constant="10" id="GPu-91-Tjd"/>
+                                            <constraint firstAttribute="trailing" secondItem="r40-WQ-veF" secondAttribute="trailing" constant="10" id="MZb-nJ-S9c"/>
+                                            <constraint firstItem="AZq-Q2-Y5K" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" constant="10" id="NWm-NV-sV5"/>
+                                            <constraint firstAttribute="trailing" secondItem="AZq-Q2-Y5K" secondAttribute="trailing" constant="10" id="Q4v-UA-Zgh"/>
+                                            <constraint firstItem="N6f-Zw-vcb" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" constant="10" id="gYK-xd-4w1"/>
+                                            <constraint firstItem="lK7-Gr-hG8" firstAttribute="top" secondItem="KxD-bY-2R8" secondAttribute="top" constant="20" id="mrv-Mi-gFn"/>
+                                            <constraint firstItem="r40-WQ-veF" firstAttribute="top" secondItem="lK7-Gr-hG8" secondAttribute="bottom" constant="20" id="sF8-B3-Yzk"/>
+                                            <constraint firstAttribute="bottom" secondItem="AZq-Q2-Y5K" secondAttribute="bottom" constant="20" id="uCy-Rj-STh"/>
+                                            <constraint firstAttribute="trailing" secondItem="lK7-Gr-hG8" secondAttribute="trailing" constant="10" id="uKv-1F-JlO"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KxD-bY-2R8" secondAttribute="bottom" id="0YY-FL-US5"/>
+                                    <constraint firstItem="Iye-h0-Pxg" firstAttribute="leading" secondItem="k1F-6R-4Y6" secondAttribute="leading" id="PRL-zR-4ak"/>
+                                    <constraint firstItem="KxD-bY-2R8" firstAttribute="top" secondItem="k1F-6R-4Y6" secondAttribute="top" id="Qya-ZH-fwa"/>
+                                    <constraint firstItem="Iye-h0-Pxg" firstAttribute="top" secondItem="k1F-6R-4Y6" secondAttribute="top" id="X11-gF-cAF"/>
+                                    <constraint firstItem="KxD-bY-2R8" firstAttribute="width" secondItem="Iye-h0-Pxg" secondAttribute="width" id="ZsL-8J-HEU"/>
+                                    <constraint firstAttribute="trailing" secondItem="KxD-bY-2R8" secondAttribute="trailing" id="d3K-EW-o6k"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iye-h0-Pxg" secondAttribute="bottom" id="zyB-0C-rzU"/>
+                                </constraints>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-2G-lXl">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Iye-h0-Pxg">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59R-Bc-Cko" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.32941176470588235" green="0.96078431372549022" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="glowColor">
-                                                <color key="value" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjz-no-4CI" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.3529411764705882" green="0.78431372549019607" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9y-Q0-daQ" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="1" green="0.52156862745098043" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCY-bI-sGX" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.67843137254901964" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="L9y-Q0-daQ" secondAttribute="trailing" id="0Ad-xg-Olm"/>
-                                    <constraint firstItem="L9y-Q0-daQ" firstAttribute="top" secondItem="Xjz-no-4CI" secondAttribute="bottom" id="9Zv-EF-ceB"/>
-                                    <constraint firstAttribute="bottom" secondItem="GCY-bI-sGX" secondAttribute="bottom" id="CQd-O8-S05"/>
-                                    <constraint firstItem="59R-Bc-Cko" firstAttribute="top" secondItem="Iye-h0-Pxg" secondAttribute="top" id="FfB-WF-LtU"/>
-                                    <constraint firstItem="59R-Bc-Cko" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" id="HLO-xt-O8A"/>
-                                    <constraint firstItem="GCY-bI-sGX" firstAttribute="top" secondItem="L9y-Q0-daQ" secondAttribute="bottom" id="MhB-mH-msp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xjz-no-4CI" secondAttribute="trailing" id="Ryv-Y8-hid"/>
-                                    <constraint firstItem="L9y-Q0-daQ" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" id="iUu-k2-lrd"/>
-                                    <constraint firstItem="GCY-bI-sGX" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" id="nm5-BI-TvR"/>
-                                    <constraint firstAttribute="trailing" secondItem="59R-Bc-Cko" secondAttribute="trailing" id="nnL-BR-88c"/>
-                                    <constraint firstItem="Xjz-no-4CI" firstAttribute="top" secondItem="59R-Bc-Cko" secondAttribute="bottom" id="qYW-Zj-DtM"/>
-                                    <constraint firstAttribute="trailing" secondItem="GCY-bI-sGX" secondAttribute="trailing" id="yFf-L4-Ccg"/>
-                                    <constraint firstItem="Xjz-no-4CI" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="leading" id="yog-kj-A2w"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="CQd-O8-S05"/>
-                                        <exclude reference="MhB-mH-msp"/>
-                                        <exclude reference="9Zv-EF-ceB"/>
-                                        <exclude reference="qYW-Zj-DtM"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KxD-bY-2R8">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK7-Gr-hG8" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="1" green="0.56862745098039214" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r40-WQ-veF" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="1" green="0.45882352941176469" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-Zw-vcb" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.0" green="0.95294117647058818" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZq-Q2-Y5K" customClass="TileButton" customModule="MemoryTiles" customModuleProvider="target">
-                                        <color key="backgroundColor" red="1" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="AZq-Q2-Y5K" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" id="3d7-nx-X2T"/>
-                                    <constraint firstItem="N6f-Zw-vcb" firstAttribute="top" secondItem="r40-WQ-veF" secondAttribute="bottom" id="6oZ-xc-PR7"/>
-                                    <constraint firstAttribute="trailing" secondItem="AZq-Q2-Y5K" secondAttribute="trailing" id="JWr-pL-MzQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="r40-WQ-veF" secondAttribute="trailing" id="RFE-Go-6Ls"/>
-                                    <constraint firstItem="r40-WQ-veF" firstAttribute="top" secondItem="lK7-Gr-hG8" secondAttribute="bottom" id="TRx-ZL-5fO"/>
-                                    <constraint firstItem="r40-WQ-veF" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" id="V7z-fs-lPH"/>
-                                    <constraint firstItem="AZq-Q2-Y5K" firstAttribute="top" secondItem="N6f-Zw-vcb" secondAttribute="bottom" id="Xk1-Ln-0LD"/>
-                                    <constraint firstAttribute="trailing" secondItem="lK7-Gr-hG8" secondAttribute="trailing" id="YOY-nc-9qw"/>
-                                    <constraint firstItem="lK7-Gr-hG8" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" id="bNt-Gd-IDF"/>
-                                    <constraint firstItem="lK7-Gr-hG8" firstAttribute="top" secondItem="KxD-bY-2R8" secondAttribute="top" id="hwt-i3-fZG"/>
-                                    <constraint firstAttribute="bottom" secondItem="AZq-Q2-Y5K" secondAttribute="bottom" id="lmT-MR-uqh"/>
-                                    <constraint firstAttribute="trailing" secondItem="N6f-Zw-vcb" secondAttribute="trailing" id="rMu-P7-LMQ"/>
-                                    <constraint firstItem="N6f-Zw-vcb" firstAttribute="leading" secondItem="KxD-bY-2R8" secondAttribute="leading" id="sOJ-8g-i11"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Xk1-Ln-0LD"/>
-                                        <exclude reference="6oZ-xc-PR7"/>
-                                        <exclude reference="TRx-ZL-5fO"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rzz-2G-lXl" secondAttribute="bottom" id="00w-aR-KTo"/>
-                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5AE-YC-Dgz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KxD-bY-2R8" secondAttribute="bottom" constant="15" id="7Vm-fw-Zc0"/>
-                            <constraint firstItem="KxD-bY-2R8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="86N-Hl-EGj"/>
-                            <constraint firstItem="KxD-bY-2R8" firstAttribute="width" secondItem="Iye-h0-Pxg" secondAttribute="width" id="8tB-Ru-aAc"/>
-                            <constraint firstItem="KxD-bY-2R8" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="trailing" constant="15" id="90L-ya-usS"/>
-                            <constraint firstItem="KxD-bY-2R8" firstAttribute="leading" secondItem="Iye-h0-Pxg" secondAttribute="trailing" constant="15" id="AMR-Nq-ZvU"/>
-                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KjH-K3-brS"/>
-                            <constraint firstItem="Iye-h0-Pxg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="LbM-yW-zzf"/>
-                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Mbh-Ub-TUg"/>
-                            <constraint firstAttribute="trailing" secondItem="Rzz-2G-lXl" secondAttribute="trailing" id="NLQ-DS-e6y"/>
-                            <constraint firstItem="Iye-h0-Pxg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="P7T-iv-p56"/>
-                            <constraint firstAttribute="trailing" secondItem="KxD-bY-2R8" secondAttribute="trailing" constant="15" id="WTA-I5-dp9"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iye-h0-Pxg" secondAttribute="bottom" constant="15" id="b3E-QR-t1s"/>
-                            <constraint firstItem="Rzz-2G-lXl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fqh-WC-2m4"/>
+                            <constraint firstItem="k1F-6R-4Y6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ASf-yW-Bnq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k1F-6R-4Y6" secondAttribute="trailing" id="ZfB-4L-oOa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k1F-6R-4Y6" secondAttribute="bottom" constant="20" id="gHK-Ha-86Q"/>
+                            <constraint firstItem="k1F-6R-4Y6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="oav-NC-qgt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Rzz-2G-lXl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="buttonEight" destination="AZq-Q2-Y5K" id="oUF-za-9Yx"/>
